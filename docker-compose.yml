@@ -1,0 +1,7 @@
+version: '3'
+services:
+  drf-app:
+    container_name: drf-running-app
+    build: .
+    ports:
+      - "8000:8000"
