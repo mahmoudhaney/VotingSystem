@@ -8,17 +8,15 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 
-# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME': config('PROD_DB_NAME'),
+        'USER': config('PROD_DB_USER'),
+        'PASSWORD': config('PROD_DB_PASSWORD'),
+        'HOST': config('PROD_DB_HOST'),
+        'PORT': config('PROD_DB_PORT'),
     }
 }
 
-# Static files
 STATIC_ROOT = BASE_DIR / 'static'

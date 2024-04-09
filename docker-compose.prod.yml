@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  postgres:
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: productionpassword
+      POSTGRES_DB: productiondb
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "productiondb"]
+
+  drf-app:
+    container_name: prod-drf-running-app
+    build: 
+      target: production
+    ports:
+      - "7000:8000"
+
+volumes:
+  postgres_prod_data:

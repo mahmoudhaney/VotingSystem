@@ -6,14 +6,13 @@ from .base import *
 
 DEBUG = True
 
-# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASSWORD'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT'),
+        'NAME': config('DEV_DB_NAME'),
+        'USER': config('DEV_DB_USER'),
+        'PASSWORD': config('DEV_DB_PASSWORD'),
+        'HOST': config('DEV_DB_HOST'),
+        'PORT': config('DEV_DB_PORT'),
     }
 }

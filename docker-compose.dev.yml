@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  postgres:
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: developmentpassword
+      POSTGRES_DB: developmentdb
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "developmentdb"]
+
+  drf-app:
+    container_name: dev-drf-running-app
+    build: 
+      target: development
+    volumes:
+      - ./VotingSystem:/app:ro
+    ports:
+      - "8000:8000"
+
+volumes:
+  postgres_dev_data:
