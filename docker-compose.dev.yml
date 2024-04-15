@@ -18,6 +18,7 @@ services:
       - ./VotingSystem:/app:ro
     ports:
       - "8000:8000"
+    command: bash -c "python manage.py makemigrations --settings=VotingSystem.settings.development && python manage.py migrate --settings=VotingSystem.settings.development && python manage.py runserver 0.0.0.0:8000 --settings=VotingSystem.settings.development"
 
 volumes:
   postgres_dev_data:
