@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView, TokenBlacklistView
-from .views import JWTLoginView, SignupView, PasswordChangeView
+from .views import JWTLoginView, SignupView, PasswordChangeView, UserProfileView
 
 app_name = 'users'
 
@@ -19,4 +19,5 @@ auth_urls = [
 
 urlpatterns = [
     path('auth/', include(auth_urls)),
+    path('profile/', UserProfileView.as_view(), name='user_profile'),
 ]
