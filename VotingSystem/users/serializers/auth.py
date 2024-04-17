@@ -9,9 +9,6 @@ from django.db import IntegrityError
 User = get_user_model()
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    pass
-
-class JWTLoginSerializer(CustomTokenObtainPairSerializer):
     """
     Custom JWT serializer to add custom claims/payload to the token
     """
@@ -21,6 +18,9 @@ class JWTLoginSerializer(CustomTokenObtainPairSerializer):
         token = super().get_token(user)
         token['email'] = str(user.email)
         return token
+
+class JWTLoginSerializer(CustomTokenObtainPairSerializer):
+    pass
 
 class SignUpSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])

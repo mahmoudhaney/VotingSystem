@@ -6,6 +6,7 @@ app_name = 'users'
 
 password_urls = [
     path('change/', PasswordChangeView.as_view()),
+    path('reset/', include('django_rest_passwordreset.urls', namespace='reset')),
 ]
 
 auth_urls = [
