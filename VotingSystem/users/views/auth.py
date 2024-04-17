@@ -2,12 +2,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from users.serializers import JWTLoginSerializer, SignUpSerializer, PasswordChangeSerializer
 from rest_framework import generics
 from rest_framework.permissions import AllowAny
-from ..models import User
-from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
 
 class JWTLoginView(TokenObtainPairView):
     serializer_class = JWTLoginSerializer
