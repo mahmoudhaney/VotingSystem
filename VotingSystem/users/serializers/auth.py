@@ -1,11 +1,11 @@
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from .user import BasicUserSerializer
 from rest_framework.validators import UniqueValidator
 from rest_framework.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
 from django.db import IntegrityError
-import re
 
 User = get_user_model()
 
@@ -23,12 +23,9 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 class JWTLoginSerializer(CustomTokenObtainPairSerializer):
     pass
 
-class SignUpSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(validators=[UniqueValidator(queryset=User.objects.all())])
+class SignUpSerializer(BasicUserSerializer):
     password = serializers.CharField(write_only=True, required=True, style={'input_type' : 'password'}, validators=[validate_password])
     password2 = serializers.CharField(write_only=True, required=True, style={'input_type' : 'password'})
-    phone_number = serializers.CharField(required=False, validators=[UniqueValidator(queryset=User.objects.all())])
-    address = serializers.CharField(required=False)
     id_proof_number = serializers.CharField(required=True, validators=[UniqueValidator(queryset=User.objects.all())])
 
     class Meta:
@@ -48,51 +45,10 @@ class SignUpSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("ID proof number must be exactly 14 digits long.")
         return value
 
-    def validate_phone_number(self, value):
-        """
-        Validate the format and uniqueness of phone_number.
-        """
-        if not value.isdigit():
-            raise serializers.ValidationError("Phone number must contain only digits.")
-        if len(value) != 11:
-            raise serializers.ValidationError("Phone number must be exactly 11 digits long.")
-        if not value.startswith('01') or value[2] not in ['0', '1', '2', '5']:
-            raise serializers.ValidationError("Invalid phone number format.")
-        return value
-
-    def validate_first_name(self, value):
-        """
-        Validate the format of first_name if it has a value.
-        """
-        if value:
-            if not value.isalpha():
-                raise serializers.ValidationError("First name must contain only alphabetic characters.")
-        return value
-
-    def validate_last_name(self, value):
-        """
-        Validate the format of last_name if it has a value.
-        """
-        if value:
-            if not value.isalpha():
-                raise serializers.ValidationError("Last name must contain only alphabetic characters.")
-        return value
-
-    def validate_address(self, value):
-        """
-        Validate the format of address using regex.
-        """
-        if value:
-            pattern = r'^[a-zA-Z0-9, \-_()]+$'
-            if not re.match(pattern, value):
-                raise serializers.ValidationError("Address must contain only alphabetic characters, numbers, and , ) - ( _ ")
-        return value
-
     def validate(self, attrs):
         attrs = super().validate(attrs)
         if attrs['password'] != attrs['password2']:
             raise ValidationError({"password": "Password fields don't match."})
-
         attrs.pop('password2')
         return attrs
 
