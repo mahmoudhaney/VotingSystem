@@ -48,7 +48,7 @@ class SignUpSerializer(BasicUserSerializer):
     def validate(self, attrs):
         attrs = super().validate(attrs)
         if attrs['password'] != attrs['password2']:
-            raise ValidationError({"password": "Password fields don't match."})
+            raise ValidationError({"password2": "Password fields don't match."})
         attrs.pop('password2')
         return attrs
 

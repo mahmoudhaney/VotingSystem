@@ -5,7 +5,7 @@ from .views import JWTLoginView, SignupView, PasswordChangeView, UserProfileView
 app_name = 'users'
 
 password_urls = [
-    path('change/', PasswordChangeView.as_view()),
+    path('change/', PasswordChangeView.as_view(), name='password_change'),
     path('reset/', include('django_rest_passwordreset.urls', namespace='reset')),
 ]
 
