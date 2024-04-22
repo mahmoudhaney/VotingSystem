@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "7f39c3d9-10b2-460f-9258-b6a538c6c270",
+		"name": "VotingSystem",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23723164"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "new_user_12",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"login",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Token Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzQ1NDI5OSwiaWF0IjoxNzEzNDU0MjM5LCJqdGkiOiJjMzM1OGIzMTdlZjY0OTRmODJjZjdjODg5NTBmMDc0ZSIsInVzZXJfaWQiOjM2LCJlbWFpbCI6Im5ld191c2VyXzEyQGdtYWlsLmNvbSJ9.I4h0GImS3-oAZ-jq48sMOLRkQC7ml6ShZcOtdIcxeT4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"token",
+								"refresh",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxMzQ1NjQwOSwiaWF0IjoxNzEzNDU2MzQ5LCJqdGkiOiI0ZGI2MDk4OGNkN2Y0ZjJlOWY5YmZjN2QxYTQyNmE5OCIsInVzZXJfaWQiOjM2LCJlbWFpbCI6Im5ld191c2VyXzEyQGdtYWlsLmNvbSJ9.RN4A8pUYSvcQMxhKvaEx31AMiJq9wDfL0ole9GCBdn",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/logout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"logout",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- Must have correct `email` and `password`"
+					},
+					"response": []
+				},
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "new_user_14",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "password2",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "mahmoudhaney14@icloud.com",
+									"type": "text"
+								},
+								{
+									"key": "first_name",
+									"value": "Mahmoud",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Haney",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "01158981944",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": ",4 street, owsim - embabah, Cairo_egypt ()",
+									"type": "text"
+								},
+								{
+									"key": "id_proof_number",
+									"value": "30201012119283",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/signup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"signup",
+								""
+							]
+						},
+						"description": "- Anyone can Signup in the system.\n- All Fields are required."
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTc4MTUwLCJpYXQiOjE3MTM0NDIxNTAsImp0aSI6IjMzOTIyYTc3NmEwODQ3N2U5NmRmZmM0NTc5NzQyYTQyIiwidXNlcl9pZCI6MzUsImVtYWlsIjoibmV3X3VzZXJfMTFAZ21haWwuY29tIn0.umL2-_I7ryn3UA0qWnWYkXxAGq3LULQoYT-jYGzsxSU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "old_password",
+									"value": "Django123",
+									"type": "text"
+								},
+								{
+									"key": "new_password",
+									"value": "Django1234",
+									"type": "text"
+								},
+								{
+									"key": "new_password2",
+									"value": "Django1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/password/change/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"password",
+								"change",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` and `old_password` are required.\n- `new_password` must be valid."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "mahmoudhaney@icloud.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/password/reset/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"password",
+								"reset",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- `email` which the user used to signup."
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password Confirm",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "password",
+									"value": "Django321",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "6ba013b834695269269f3313e7b37504f2a2fe8a890c879d",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/auth/password/reset/confirm/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"auth",
+								"password",
+								"reset",
+								"confirm",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- token which is sent to user email.\n    \n- new password and must be valid."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Retrieve User Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTgzOTQ1LCJpYXQiOjE3MTM0NDc5NDUsImp0aSI6IjE4MTRhYzFjNjYxMjRhNzc4NmVkM2MzYWMwZDYyZTg2IiwidXNlcl9pZCI6MzYsImVtYWlsIjoibmV3X3VzZXJfMTJAZ21haWwuY29tIn0.PYJW_K715v0uBFjHYD2kOvvo2IMsz3ytfKJuFcE-gaI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"profile",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required."
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTgzOTQ1LCJpYXQiOjE3MTM0NDc5NDUsImp0aSI6IjE4MTRhYzFjNjYxMjRhNzc4NmVkM2MzYWMwZDYyZTg2IiwidXNlcl9pZCI6MzYsImVtYWlsIjoibmV3X3VzZXJfMTJAZ21haWwuY29tIn0.PYJW_K715v0uBFjHYD2kOvvo2IMsz3ytfKJuFcE-gaI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Mahmoud",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Haney",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "new_user_12@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Egypt",
+									"type": "text"
+								},
+								{
+									"key": "phone_number",
+									"value": "01115007982",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"profile",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required.\n    \n- all fields are not required."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User Profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTA5ODY0LCJpYXQiOjE3MTMzNzM4NjQsImp0aSI6ImVkMzVjYTFlYjVhNzQwNjc5OWYwMWVlZTgzOWM4Mzc1IiwidXNlcl9pZCI6MjQsImVtYWlsIjoibmV3X3VzZXIxNkBleGFtcGxlLmNvbSJ9.9qlLgHhwo_R1hkZqbicSqOq9sYUcd98kDNEJs9RZbVg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/users/profile/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"users",
+								"profile",
+								""
+							]
+						},
+						"description": "Must be registered\n\n- valid `token` is required."
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
