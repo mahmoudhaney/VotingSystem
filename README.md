@@ -14,15 +14,15 @@ Admins can also view an election’s result by using the election ID. A user can
 - DB `PostgreSQL`
 
 ## Setup
-- Make sure you have [Docker](https://www.docker.com/) installed on your PC and it's running.
+**1. Make sure you have [Docker](https://www.docker.com/) installed on your PC and it's running.**
 
-- Clone the repository or download a `ZIP`:
+**2. Clone the repository or download a `ZIP`:**
 ```bash
-git clone [https://github.com/mahmoudhaney/Jobs.git](https://github.com/mahmoudhaney/VotingSystem.git)
+git clone https://github.com/mahmoudhaney/VotingSystem.git
 
 ```
 
-- Navigate to the directory where the application is installed, create a `.env` file with the following variables:
+**3. Navigate to the directory where the application is installed, create a `.env` file with the following variables:**
 ```
 SECRET_KEY = 'type_your_seceret_key_here'
 
@@ -42,7 +42,7 @@ EMAIL_HOST_USER = 'test_email@example.com'
 EMAIL_HOST_PASSWORD = 'your_email_host_password_here'
 ```
 
-- Run the project in a development environment
+**4. Run the project in a development environment**
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 
