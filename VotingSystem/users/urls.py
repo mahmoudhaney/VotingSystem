@@ -20,5 +20,5 @@ auth_urls = [
 urlpatterns = [
     path('auth/', include(auth_urls)),
     path('profile/', UserProfileView.as_view(), name='user_profile'),
-    path('candidate/', CandidateCreateView.as_view(), name='candidate_profile'),
+    path('candidate/', CandidateCreateView.as_view(), name='candidate_create'),
 ]

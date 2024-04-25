@@ -1,11 +1,15 @@
 from rest_framework.test import APITestCase 
 from django.urls import reverse
 from rest_framework import status
-from users.models import User
+from users.models import User, Candidate
+from elections.models import Election
 from rest_framework_simplejwt.tokens import RefreshToken
 import datetime
 from django.core import mail
 import re
+from django.core.files.uploadedfile import SimpleUploadedFile
+from PIL import Image
+import io
 
 def create_basic_user():
     return User.objects.create_user(username='testuser', 
@@ -14,6 +18,29 @@ def create_basic_user():
                                     id_proof_number='30203020302032', 
                                     phone_number='01234567890'
                                     )
+
+def create_admin_user():
+    return User.objects.create_user(username='testuser', 
+                                    email='test@example.com', 
+                                    password='testpassword', 
+                                    id_proof_number='30203020302032', 
+                                    phone_number='01234567890',
+                                    is_staff=True
+                                    )
+
+def create_election():
+    return Election.objects.create(name='Test Election', 
+                                    description='Test Description', 
+                                    start_date='2024-04-26T00:00:00Z', 
+                                    end_date='2024-04-28T00:00:00Z'
+                                    )
+
+def generate_test_image():
+    image = Image.new('RGB', (100, 100), 'red')
+    image_io = io.BytesIO()
+    image.save(image_io, format='JPEG')
+    image_io.seek(0)
+    return SimpleUploadedFile("test_photo.jpg", image_io.getvalue(), content_type="image/jpeg")
 
 def authenticate_user(user):
     token = RefreshToken.for_user(user)
@@ -501,4 +528,93 @@ class UserProfileUpdateTestCase(APITestCase):
     def test_update_profile_without_authentication(self):
         response = self.client.delete(self.url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+class CandidateCreateTestCase(APITestCase):
+    def setUp(self):
+        self.url = reverse('users:candidate_create')
+        self.admin_user = create_admin_user()
+        self.refresh_token, self.access_token = authenticate_user(self.admin_user)
+        self.headers = {'HTTP_AUTHORIZATION': f'Bearer {self.access_token}'}
+        self.image_file = generate_test_image()
+        self.election = create_election()
+        self.data = {
+            'name': 'Test Candidate',
+            'bio': 'Test Bio',
+            'photo': self.image_file,
+            'election_uuid': self.election.uuid
+        }
+
+    def test_create_candidate_with_valid_data(self):
+        response = self.client.post(self.url, self.data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(Candidate.objects.count(), 1)
+        self.assertEqual(Candidate.objects.get().name, 'Test Candidate')
+        self.assertEqual(Candidate.objects.get().election.uuid, self.election.uuid)
+        self.assertIn('name', response.data)
+        self.assertIn('bio', response.data)
+        self.assertIn('photo', response.data)
+
+    def test_create_candidate_with_missing_fields(self):
+        response = self.client.post(self.url, {}, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('name', response.data)
+        self.assertIn('photo', response.data)
+        self.assertIn('election_uuid', response.data)
+
+    def test_create_candidate_with_invalid_data(self):
+        data = {
+            'name': 'Test Candidate 34',
+            'bio': 'Test Bio:;$',
+            'photo': 'invalid_photo',
+            'election_uuid': 'invalid_uuid'
+        }
+        response = self.client.post(self.url, data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('name', response.data)
+        self.assertIn('bio', response.data)
+        self.assertIn('photo', response.data)
+        self.assertIn('election_uuid', response.data)
+
+    def test_create_candidate_with_inactive_election(self):
+        self.election.is_active = False
+        self.election.save()
+
+        response = self.client.post(self.url, self.data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('election_uuid', response.data)
+
+    def test_create_candidate_with_wrong_authentication(self):
+        self.headers = {'HTTP_AUTHORIZATION': f'Bearer wrong_token_here'}
+        response = self.client.post(self.url, self.data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_create_candidate_without_authentication(self):
+        response = self.client.post(self.url, self.data, format='multipart')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_create_candidate_with_invalid_photo_size(self):
+        self.image_file = SimpleUploadedFile("test_photo.jpg", b"0" * (5 * 1024 * 1024 + 1), content_type="image/jpeg")
+        data = {
+            'name': 'Test Candidate',
+            'bio': 'Test Bio',
+            'photo': self.image_file,
+            'election_uuid': self.election.uuid
+        }
+        response = self.client.post(self.url, data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('photo', response.data)
+
+    def test_create_candidate_with_non_existent_election(self):
+        self.data['election_uuid'] = '00000000-0000-0000-0000-000000000000'
+        response = self.client.post(self.url, self.data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn('election_uuid', response.data)
+
+    def test_create_candidate_with_wrong_user_type(self):
+        self.admin_user.is_staff = False
+        self.admin_user.save()
+
+        response = self.client.post(self.url, self.data, format='multipart', **self.headers)
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(Candidate.objects.count(), 0)
 
