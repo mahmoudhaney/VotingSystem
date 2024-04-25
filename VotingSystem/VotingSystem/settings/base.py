@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'users',
     'django_rest_passwordreset',
+    'elections',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +90,8 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+MEDIA_ROOT = 'media/'
+MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
