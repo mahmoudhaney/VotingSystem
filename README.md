@@ -56,7 +56,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 After running the server you can use [Postman](https://www.postman.com/downloads/) to try the APIs
 1. Open Postman
 2. Import the [APIs File](VotingSystem.postman_collection.json) into your workspace
-3. Use APIs to add some Users, Categories, Jobs, and Applications
+3. Use APIs to add some Users, Candidates, and Elections
 
 > ⚠ You can choose whatever you want to run the System APIs
 
