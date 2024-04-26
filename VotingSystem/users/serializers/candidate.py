@@ -60,3 +60,7 @@ class CandidateSerializer(serializers.ModelSerializer):
         representation.pop('election')
         return representation
 
+class CandidateWithVotesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Candidate
+        fields = ['name', 'bio', 'photo', 'uuid', 'total_votes']
