@@ -14,6 +14,8 @@ class Candidate(models.Model):
     election = models.ForeignKey('elections.Election', related_name='candidates', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    total_votes = models.PositiveIntegerField(default=0)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     def __str__(self) -> str:
         return str(self.name)

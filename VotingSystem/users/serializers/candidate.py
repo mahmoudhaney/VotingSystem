@@ -9,8 +9,8 @@ class CandidateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Candidate
-        fields = ['name', 'bio', 'photo', 'election', 'election_uuid']
-        read_only_fields = ['election']
+        fields = ['name', 'bio', 'photo', 'election', 'election_uuid', 'uuid']
+        read_only_fields = ['election', 'uuid']
     
     def validate_name(self, value):
         """
