@@ -1,6 +1,13 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView, TokenBlacklistView
-from .views import JWTLoginView, SignupView, PasswordChangeView, UserProfileView, CandidateCreateView
+from .views import (
+    JWTLoginView, 
+    SignupView, 
+    PasswordChangeView, 
+    UserProfileView, 
+    CandidateCreateView, 
+    CandidateRetrieveView
+    )
 
 app_name = 'users'
 
@@ -17,8 +24,13 @@ auth_urls = [
     path('password/', include(password_urls))
 ]
 
+candidate_urls = [
+    path('', CandidateCreateView.as_view(), name='candidate_create'),
+    path('<uuid:candidate_uuid>', CandidateRetrieveView.as_view(), name='candidate_retrieve'),
+]
+
 urlpatterns = [
     path('auth/', include(auth_urls)),
     path('profile/', UserProfileView.as_view(), name='user_profile'),
-    path('candidate/', CandidateCreateView.as_view(), name='candidate_create'),
+    path('candidates/', include(candidate_urls)),
 ]
