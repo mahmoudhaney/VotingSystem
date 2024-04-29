@@ -28,13 +28,6 @@ def create_admin_user():
                                     is_staff=True
                                     )
 
-def create_election():
-    return Election.objects.create(name='Test Election', 
-                                    description='Test Description', 
-                                    start_date='2024-04-26T00:00:00Z', 
-                                    end_date='2024-04-28T00:00:00Z'
-                                    )
-
 def generate_test_image():
     image = Image.new('RGB', (100, 100), 'red')
     image_io = io.BytesIO()
@@ -536,12 +529,19 @@ class CandidateCreateTestCase(APITestCase):
         self.refresh_token, self.access_token = authenticate_user(self.admin_user)
         self.headers = {'HTTP_AUTHORIZATION': f'Bearer {self.access_token}'}
         self.image_file = generate_test_image()
-        self.election = create_election()
+        election_data = {
+        'name': 'Test Election 2024',
+        'description': 'Test Description',
+        'start_date': '2024-04-26T00:00:00Z',
+        'end_date': '2024-04-28T00:00:00Z',
+        }
+        self.election_response = self.client.post(reverse('elections:elections-list-create'), election_data, **self.headers)
+        self.election_uuid = self.election_response.data['uuid']
         self.data = {
             'name': 'Test Candidate',
             'bio': 'Test Bio',
             'photo': self.image_file,
-            'election_uuid': self.election.uuid
+            'election_uuid': self.election_uuid
         }
 
     def test_create_candidate_with_valid_data(self):
@@ -549,7 +549,7 @@ class CandidateCreateTestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Candidate.objects.count(), 1)
         self.assertEqual(Candidate.objects.get().name, 'Test Candidate')
-        self.assertEqual(Candidate.objects.get().election.uuid, self.election.uuid)
+        self.assertEqual(Candidate.objects.get().election.uuid, Election.objects.get().uuid)
         self.assertIn('name', response.data)
         self.assertIn('bio', response.data)
         self.assertIn('photo', response.data)
@@ -576,8 +576,9 @@ class CandidateCreateTestCase(APITestCase):
         self.assertIn('election_uuid', response.data)
 
     def test_create_candidate_with_inactive_election(self):
-        self.election.is_active = False
-        self.election.save()
+        election = Election.objects.get(uuid=self.election_uuid)
+        election.is_active = False
+        election.save()
 
         response = self.client.post(self.url, self.data, format='multipart', **self.headers)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -598,7 +599,7 @@ class CandidateCreateTestCase(APITestCase):
             'name': 'Test Candidate',
             'bio': 'Test Bio',
             'photo': self.image_file,
-            'election_uuid': self.election.uuid
+            'election_uuid': self.election_uuid
         }
         response = self.client.post(self.url, data, format='multipart', **self.headers)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

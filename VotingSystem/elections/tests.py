@@ -13,7 +13,7 @@ def create_candidate_url():
 def HTTP_AUTHORIZATION_HEADER(token):
     return {'HTTP_AUTHORIZATION': f'Bearer {token}'}
 
-def eletion_data():
+def election_data():
     return {
         'name': 'Test Election 2024',
         'description': 'Test Description',
@@ -39,7 +39,7 @@ class ElectionAPITestCase(APITestCase):
         self.admin_user = create_admin_user()
         self.refresh_token, self.access_token = authenticate_user(self.admin_user)
         self.headers = HTTP_AUTHORIZATION_HEADER(self.access_token)
-        self.data = eletion_data()
+        self.data = election_data()
 
     def test_create_election_success(self):
         response = create_election(self, self.url, self.data, self.headers)
@@ -130,7 +130,7 @@ class ElectionCandidatesViewTestCase(APITestCase):
         self.admin_user = create_admin_user()
         self.refresh_token, self.access_token = authenticate_user(self.admin_user)
         self.headers = HTTP_AUTHORIZATION_HEADER(self.access_token)
-        self.election_data = eletion_data()
+        self.election_data = election_data()
 
     def test_get_election_candidates_success(self):
         election_response = create_election(self, create_list_election_url(), self.election_data, self.headers)
