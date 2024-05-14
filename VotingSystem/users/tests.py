@@ -20,11 +20,11 @@ def create_basic_user():
                                     )
 
 def create_admin_user():
-    return User.objects.create_user(username='testuser', 
-                                    email='test@example.com', 
+    return User.objects.create_user(username='testadminuser', 
+                                    email='testadmin@example.com', 
                                     password='testpassword', 
-                                    id_proof_number='30203020302032', 
-                                    phone_number='01234567890',
+                                    id_proof_number='30203020302011', 
+                                    phone_number='01234567811',
                                     is_staff=True
                                     )
 
