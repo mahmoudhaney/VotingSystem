@@ -11,7 +11,10 @@ Admins can also view an election’s result by using the election ID. A user can
 ## Technologies
 - `Django 5.0.4`
 - `Django Rest Framework 3.15.1`
-- DB `PostgreSQL`
+- `JWT`
+- `PostgreSQL`
+- `Docker`
+- `NGINX`
 
 ## Setup
 **1. Make sure you have [Docker](https://www.docker.com/) installed on your PC and it's running.**
@@ -42,13 +45,18 @@ EMAIL_HOST_USER = 'test_email@example.com'
 EMAIL_HOST_PASSWORD = 'your_email_host_password_here'
 ```
 
-**4. Run the project in a development environment**
-```bash
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+**4. Run the project**
+  -  Run in a **Development Environment**
+      ```bash
+      docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+      ```
+  -  Run in a **Production Environment**
+        ```bash
+        docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+        ```
+     - The `Production Environment` is running with two Backend Containers for load Balancing with `NGINX`
 
-```
-
-> ⚠ Then, the development server will be started at http://127.0.0.1:8000/
+> ⚠ Both **Development** & **Production** servers will be started at http://localhost
 
 #
 
