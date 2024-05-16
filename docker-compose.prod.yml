@@ -11,12 +11,10 @@ services:
       test: ["CMD", "pg_isready", "-U", "postgres", "-d", "productiondb"]
 
   drf-app:
-    container_name: prod-drf-running-app
     build: 
       target: production
-    ports:
-      - "7000:8000"
-    command: bash -c "python manage.py makemigrations --settings=VotingSystem.settings.production && python manage.py migrate --settings=VotingSystem.settings.production && python manage.py runserver 0.0.0.0:8000 --settings=VotingSystem.settings.production"
+    entrypoint: ./entrypoint.sh
+    scale: 2
 
 volumes:
   postgres_prod_data:

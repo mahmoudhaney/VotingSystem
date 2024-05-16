@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7f39c3d9-10b2-460f-9258-b6a538c6c270",
+		"_postman_id": "9a414d6a-ead7-4abc-9963-e62f45330e15",
 		"name": "VotingSystem",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23723164"
@@ -19,7 +19,7 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "new_user_12",
+									"value": "mahmoudhaney",
 									"type": "text"
 								},
 								{
@@ -30,15 +30,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/login/",
+							"raw": "http://localhost/users/auth/login/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -66,15 +62,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/token/refresh/",
+							"raw": "http://localhost/users/auth/token/refresh/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -103,15 +95,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/logout/",
+							"raw": "http://localhost/users/auth/logout/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -133,7 +121,7 @@
 							"formdata": [
 								{
 									"key": "username",
-									"value": "new_user_14",
+									"value": "voter1",
 									"type": "text"
 								},
 								{
@@ -148,7 +136,7 @@
 								},
 								{
 									"key": "email",
-									"value": "mahmoudhaney14@icloud.com",
+									"value": "voter1@icloud.com",
 									"type": "text"
 								},
 								{
@@ -163,31 +151,28 @@
 								},
 								{
 									"key": "phone_number",
-									"value": "01158981944",
+									"value": "01158981911",
 									"type": "text"
 								},
 								{
 									"key": "address",
 									"value": ",4 street, owsim - embabah, Cairo_egypt ()",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "id_proof_number",
-									"value": "30201012119283",
+									"value": "30201012119211",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/signup/",
+							"raw": "http://localhost/users/auth/signup/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -206,8 +191,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTc4MTUwLCJpYXQiOjE3MTM0NDIxNTAsImp0aSI6IjMzOTIyYTc3NmEwODQ3N2U5NmRmZmM0NTc5NzQyYTQyIiwidXNlcl9pZCI6MzUsImVtYWlsIjoibmV3X3VzZXJfMTFAZ21haWwuY29tIn0.umL2-_I7ryn3UA0qWnWYkXxAGq3LULQoYT-jYGzsxSU",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTc4MTUwLCJpYXQiOjE3MTM0NDIxNTAsImp0aSI6IjMzOTIyYTc3NmEwODQ3N2U5NmRmZmM0NTc5NzQyYTQyIiwidXNlcl9pZCI6MzUsImVtYWlsIjoibmV3X3VzZXJfMTFAZ21haWwuY29tIn0.umL2-_I7ryn3UA0qWnWYkXxAGq3LULQoYT-jYGzsxSU"
 							}
 						],
 						"body": {
@@ -215,31 +199,27 @@
 							"formdata": [
 								{
 									"key": "old_password",
-									"value": "Django123",
+									"value": "",
 									"type": "text"
 								},
 								{
 									"key": "new_password",
-									"value": "Django1234",
+									"value": "new",
 									"type": "text"
 								},
 								{
 									"key": "new_password2",
-									"value": "Django1234",
+									"value": "new",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/password/change/",
+							"raw": "http://localhost/users/auth/password/change/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -268,15 +248,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/password/reset/",
+							"raw": "http://localhost/users/auth/password/reset/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -312,15 +288,11 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/auth/password/reset/confirm/",
+							"raw": "http://localhost/users/auth/password/reset/confirm/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"auth",
@@ -346,20 +318,15 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTgzOTQ1LCJpYXQiOjE3MTM0NDc5NDUsImp0aSI6IjE4MTRhYzFjNjYxMjRhNzc4NmVkM2MzYWMwZDYyZTg2IiwidXNlcl9pZCI6MzYsImVtYWlsIjoibmV3X3VzZXJfMTJAZ21haWwuY29tIn0.PYJW_K715v0uBFjHYD2kOvvo2IMsz3ytfKJuFcE-gaI",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1MDg2NTUyLCJpYXQiOjE3MTM1NTA1NTIsImp0aSI6IjVkMWFmN2Y0OWQwZTQ2ODA5NDc1N2EzYjRlODgyNmE2IiwidXNlcl9pZCI6MzksImVtYWlsIjoibWFobW91ZGhhbmV5MTVAaWNsb3VkLmNvbSJ9.6uEA1-n7C5VpAQjhVnXts9E7aCETAyv07zVZR8ub-3s"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/profile/",
+							"raw": "http://localhost/users/profile/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"profile",
@@ -377,8 +344,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTgzOTQ1LCJpYXQiOjE3MTM0NDc5NDUsImp0aSI6IjE4MTRhYzFjNjYxMjRhNzc4NmVkM2MzYWMwZDYyZTg2IiwidXNlcl9pZCI6MzYsImVtYWlsIjoibmV3X3VzZXJfMTJAZ21haWwuY29tIn0.PYJW_K715v0uBFjHYD2kOvvo2IMsz3ytfKJuFcE-gaI",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1MDg2NTUyLCJpYXQiOjE3MTM1NTA1NTIsImp0aSI6IjVkMWFmN2Y0OWQwZTQ2ODA5NDc1N2EzYjRlODgyNmE2IiwidXNlcl9pZCI6MzksImVtYWlsIjoibWFobW91ZGhhbmV5MTVAaWNsb3VkLmNvbSJ9.6uEA1-n7C5VpAQjhVnXts9E7aCETAyv07zVZR8ub-3s"
 							}
 						],
 						"body": {
@@ -397,30 +363,29 @@
 								{
 									"key": "email",
 									"value": "new_user_12@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "address",
 									"value": "Egypt",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "phone_number",
 									"value": "01115007982",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/profile/",
+							"raw": "http://localhost/users/profile/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"profile",
@@ -438,20 +403,15 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTA5ODY0LCJpYXQiOjE3MTMzNzM4NjQsImp0aSI6ImVkMzVjYTFlYjVhNzQwNjc5OWYwMWVlZTgzOWM4Mzc1IiwidXNlcl9pZCI6MjQsImVtYWlsIjoibmV3X3VzZXIxNkBleGFtcGxlLmNvbSJ9.9qlLgHhwo_R1hkZqbicSqOq9sYUcd98kDNEJs9RZbVg",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ0OTA5ODY0LCJpYXQiOjE3MTMzNzM4NjQsImp0aSI6ImVkMzVjYTFlYjVhNzQwNjc5OWYwMWVlZTgzOWM4Mzc1IiwidXNlcl9pZCI6MjQsImVtYWlsIjoibmV3X3VzZXIxNkBleGFtcGxlLmNvbSJ9.9qlLgHhwo_R1hkZqbicSqOq9sYUcd98kDNEJs9RZbVg"
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/users/profile/",
+							"raw": "http://localhost/users/profile/",
 							"protocol": "http",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"localhost"
 							],
-							"port": "8000",
 							"path": [
 								"users",
 								"profile",
@@ -459,6 +419,266 @@
 							]
 						},
 						"description": "Must be registered\n\n- valid `token` is required."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Candidates",
+			"item": [
+				{
+					"name": "Add Candidate",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1NTgyNzQxLCJpYXQiOjE3MTQwNDY3NDEsImp0aSI6ImE1YjlmNjhmY2Q5NTQzZjdiMGM3ZmJiMDZiZGU3MDBmIiwidXNlcl9pZCI6NDIsImVtYWlsIjoibWFobW91ZGhhbmV5MjVAaWNsb3VkLmNvbSJ9.cHwh4zoq7gsA9sughqHz6JMOa1sxKUE_Ka-7ZIYVFXc"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Candidate Four",
+									"type": "text"
+								},
+								{
+									"key": "bio",
+									"value": "This is the candidate 4",
+									"type": "text"
+								},
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/mahmo/Pictures/_ME1_.jpg"
+								},
+								{
+									"key": "election_uuid",
+									"value": "ebdd6c71-963a-47bc-ab23-e2d7195558c4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/users/candidates/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"users",
+								"candidates",
+								""
+							]
+						},
+						"description": "- Anyone can Signup in the system.\n- All Fields are required."
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve Candidate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/users/candidates/3e2c5389-1250-481d-8e29-ba6a42bdaa92",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"users",
+								"candidates",
+								"3e2c5389-1250-481d-8e29-ba6a42bdaa92"
+							]
+						},
+						"description": "- Anyone can Signup in the system.\n- All Fields are required."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Elections",
+			"item": [
+				{
+					"name": "List Elections",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/elections/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"elections",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Election's Candidates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/elections/ebdd6c71-963a-47bc-ab23-e2d7195558c4/candidates/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"elections",
+								"ebdd6c71-963a-47bc-ab23-e2d7195558c4",
+								"candidates",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Election's Result",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://localhost/elections/ebdd6c71-963a-47bc-ab23-e2d7195558c4/result/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"elections",
+								"ebdd6c71-963a-47bc-ab23-e2d7195558c4",
+								"result",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Election",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1NjcyODA0LCJpYXQiOjE3MTQxMzY4MDQsImp0aSI6IjJkMDU4N2Q3NDdmMDQ2MzI5YjBkNmExODQxZDcwOTE5IiwidXNlcl9pZCI6NDIsImVtYWlsIjoibWFobW91ZGhhbmV5MjVAaWNsb3VkLmNvbSJ9.u7oahamMc1jve9xpjtPmp1VKbI3F8pW6dGriMItNeIA"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Postman Election 2024",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "This is Postman Election",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-04-22",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-04-26",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/elections/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"elections",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Vote",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzQ1NjA5NDIzLCJpYXQiOjE3MTQwNzM0MjMsImp0aSI6ImY5ZDljOTdlOWZjYTQ4NjNiMzY2YTg0YjIzZWQ1YWRkIiwidXNlcl9pZCI6NDMsImVtYWlsIjoidm90ZXIxQGljbG91ZC5jb20ifQ.dKb0jw1Nl_4Hxnc5l-C8uHPWPEEdhBVHi3R-noj7hQE"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "election_uuid",
+									"value": "ebdd6c71-963a-47bc-ab23-e2d7195558c4",
+									"type": "text"
+								},
+								{
+									"key": "candidate_uuid",
+									"value": "f9e7a890-2252-4eae-9179-ed7958135b9d",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost/elections/vote/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"elections",
+								"vote",
+								""
+							]
+						}
 					},
 					"response": []
 				}
